@@ -1,0 +1,19 @@
+create or replace procedure display(code number) is
+	cursor c is
+	select s.staff_code,s.staff_name,bt.book_issue_date,
+	d.design_name,bt.book_expected_return_date from
+	staff_masters s,designation_masters d,book_transactions bt
+	where s.staff_code = bt.staff_code and 
+	s.design_code = d.design_code and bt.book_code = code;
+	v_code staff_masters.staff_code%type;
+	v_name staff_masters.staff_name%type;
+	v_issue book_transactions.book_issue_return_date%type;
+	v_design designation_masters.design_name%type;
+	v_expect book_transactions.book_expected_return_date%type;
+begin
+	open c;
+	fetch c into v_code,v_name,v_issue,v_design,v_expect;
+	dbms_output.put_line(v_code||' '||v_name||' '||v_design||
+			     ' '||v_issue||' '||v_expect);
+	close c;
+end display;

@@ -1,0 +1,39 @@
+/*****************************************************************
+* File Name	: 3.5
+* Author Name	: Abhishikth
+* Description	: To count the number of times a character is present in word
+* Created On	: 24/05/2017
+*****************************************************************/
+
+BEGIN 
+	DECLARE str AS STRING
+	DECLARE letter AS CHARACTER
+	DECLARE count,length AS INTEGER	
+
+	PROMPT "Enter a word" AND STORE IN str
+	PROMPT "Enter a letter to be searched" AND STORE IN letter
+	length=getlength(str)
+
+	count=search(str,letter,length)
+
+	PRINT "Letter is found" +count +"times in the given word"
+END
+
+/*****************************************************************
+* Module Name	: search
+* Input		: str,letter,length
+* Return Type	: INTEGER
+* Description	: To count the number of times a character is present in word
+* Created On	: 24/05/2017
+*****************************************************************/
+
+SUB search(str,letter,length)
+	DECLARE index AS INTEGER ANDD STORE 0
+	FOR index = 0 TO (length-1)
+		IF(str.charAt(index) == letter)
+			count=count+1
+		END IF
+	END FOR
+	RETURN count
+END SUB
+	

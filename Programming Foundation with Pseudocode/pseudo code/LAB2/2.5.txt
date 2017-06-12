@@ -1,0 +1,77 @@
+// Definition of consumer Record
+
+RECORD consumer
+	DECLARE consumerId AS INTEGER
+	DECLARE consumerName AS STRING
+	DECLARE last,current AS INTEGER
+	DECLARE unitsconsumed AS INTEGER
+	DECLARE netAmount AS FLOAT
+END RECORD
+
+/***************************************************************************
+* File Name	: 2.5
+* Author Name	: Abhishikth
+* Version	: 1
+* Created On	: 23/05/2017
+**************************************************************************/
+
+BEGIN
+	DECLARE con AS consumer
+	read(con)		// To read the details of consumer
+	con=calculate(con)	// To calculate the net amount for units consumed
+	display(con)		// To display the consumer details and net amount
+END
+
+/***************************************************************************
+* Module Name 	: read
+* Input		: consumer
+* Return Type	: 
+* Created On	: 23/05/2017
+***************************************************************************/
+
+SUB read(con)
+	PROMPT "Enter consumer ID" AND STORE IN con.consumerId
+	PROMPT "Enter consumer Name" AND STORE IN con.consumerName
+	PROMPT "Enter last month reading" AND STORE IN con.last
+	PROMPT "Enter current month reading" AND STORE IN con.current
+END SUB
+
+/**************************************************************************
+* Module Name	: calculate
+* Input		: consumer
+* Return Type	: consumer
+* Created On	: 23/05/2017
+*************************************************************************/
+
+SUB calculate(con)
+	DECLARE CONSTANT fixedCharge AS INTEGER AND STORE 100
+	DECLARE CONSTANT unitChargefor100 AS INTEGER AND STORE 3.35
+	DECLARE CONSTANT unitChargefor200 AS INTEGER AND STORE 4.49
+	DECLARE CONSTANT unitChargefor300 AS INTEGER AND STORE 5.59
+	CALCULATE con.unitsconsumed=con.current-con.last
+	IF con.unitsConsumed<100 THEN
+		CALCULATE con.netAmount=(con.unitsConsumed*unitChargefor100)+fixedCharge
+	ENDIF
+	IF (con.unitsConsumed>=100 AND con.unitsConsumed<200) THEN
+		CALCULATE con.netAmount=(100*unitChargefor100)+((con.unitsConsumed-100)*unitChargefor200)+fixedCharge
+	ENDIF
+	IF con.unitsConsumed>=200 THEN 
+		CALCULATE con.netAmount=(100*unitChargefor100)+(100*unitChargefor200)+((con.unitsConsumed-200)*unitChargefor300)+fixedCharge
+	ENDIF
+END SUB
+
+/**************************************************************************
+* Module name 	: dislpay
+* Input		: consumer
+* Return Type	: 
+* Created On	: 23/05/2017
+**************************************************************************/
+
+SUB display(con)
+	PRINT "Consumer ID",con.consumerId
+	PRINT "Consumer Name",con.consumerName
+	PRINT "Last Month Reading",con.last
+	PRINT "Current Month Reading",con.current
+	PRINT "Units Consumed",con.unitsConsumed
+	PRINT "NetAmount",con.netAmount
+END SUB

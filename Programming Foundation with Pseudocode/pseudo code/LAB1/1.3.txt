@@ -1,0 +1,13 @@
+BEGIN
+	DECLARE N,prev,next,sum AS INTEGER
+	INITIALIZE prev=0,next=1
+
+	PROMPT "Enter N value" AND STORE IN N
+	PRINT prev,next
+	FOR sum<=N
+		PRINT sum=prev+next
+		prev=next
+		next=sum
+	END FOR
+END
+		

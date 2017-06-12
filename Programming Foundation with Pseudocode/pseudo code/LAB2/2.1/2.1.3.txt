@@ -1,0 +1,35 @@
+/*********************************************************************
+ * File                 : 2.1.3
+ * Author Name          : Abhishikth
+ * Description          : Program to print the mathematical series 
+ * Version              : 1.0
+ * Date 	        : 23-05-2017
+*********************************************************************/
+
+BEGIN
+	DECLARE N,prev,next,sum AS INTEGER
+	INITIALIZE prev=0,next=1
+
+	PROMPT "Enter N value" AND STORE IN N
+	PRINT prev,next
+	FOR sum<=N
+		PRINT sum=prev+next
+		prev=next
+		next=sum
+	END FOR
+END 
+
+/*********************************************************************
+* Module Name         : series(num)
+* Input Parameters    : number of the array
+* Return Type         : INTEGER
+* Author              : Abhishikth
+*  Date       	      : 23-05-2017
+*********************************************************************/
+SUB series(num)	
+	INITIALSE c=0
+	WHILE(c<=num)
+		c=a+b
+	ENDWHILE
+	RETURN c
+END SUB

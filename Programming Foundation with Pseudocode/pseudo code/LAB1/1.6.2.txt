@@ -1,0 +1,24 @@
+BEGIN
+	DECLARE num[10] AS INTEGER ARRAY
+	DECLARE index AS INTEGER
+	INITIALIZE index=0,min=9999
+
+	PROMPT "Enter 10 numbers"
+	FOR index=0 TO 9
+		ACCEPT num[index]
+	END FOR
+
+	PRINT "Even numbers are "
+	FOR index=0 TO 9
+		IF num[index]%2==0 THEN
+			PRINT num[index]
+		END IF
+	END FOR
+
+	PRINT "Odd numbers are "
+	FOR index=0 TO 9
+		IF num[index]%2!=0 THEN
+			PRINT num[index]
+		END IF
+	END FOR
+END

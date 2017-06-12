@@ -1,0 +1,38 @@
+*********************************************************************
+ * File                 : 2.1.2
+ * Author Name          : Abhishikth
+ * Desc                 : Program to know the years of experience
+ * Version              : 1.0
+ * Last Modified Date   : 23-may-2017
+ *********************************************************************/
+BEGIN
+	DECLARE yearsofexperience as integer
+	DECLARE TagColour AS STRING
+	//INPUT
+	pROMPT"enter years of experience"
+	ACCEPT yearsofexperience
+	TagColour=yearsofexpereince(exp)
+ 	Print"The Tag Colour is Blue",Blue
+        Print"The Tag Colour is Grey",Grey
+        Print"The Tag Colour is Yellow",Yellow
+        Print"The Tag Colour is Red",Red	
+END
+	
+/*********************************************************************
+* Module Name         : years of expereince(exp)
+* Input Parameters    : years of expereince
+* Return Type         : character
+* Author              : Abhishikth
+*  Date       	      : 23-05-2017
+********************************************************************/
+SUB yearsofexpereince(exp)
+	IF exp<3
+	   RETURN 'Blue'
+	ELSE IF exp=3 and exp<5
+	   RETURN 'Grey'
+	ELSE exp=5 and exp<10
+	   RETURN 'Yellow'
+	ELSE exp>10
+	   RETURN 'Red'
+	END IF
+END SUB

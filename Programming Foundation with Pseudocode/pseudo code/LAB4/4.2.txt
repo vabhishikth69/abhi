@@ -1,0 +1,78 @@
+// Definition of employee Record
+
+RECORD Employee
+	DECLARE empId AS INTEGER
+	DECLARE empType AS STRING
+END RECORD
+
+/**************************************************************************************
+* File Name 	: 4.2
+* Author Name	: Abhishikth
+* Version	: 1
+* Created On	: 24/05/2017
+**************************************************************************************/
+
+BEGIN
+	DECLARE emp[5] AS Employee
+	DECLARE leaves,totalLeaves,index AS INTEGER
+
+	FOR index=0 TO 4	
+		PROMPT "Enter the Employee ID of " +index AND STORE IN emp[index].empId
+		validId=isValidId(emp[index].empId)
+		PROPMT "Enter the Employee Type " AND STORE IN emp[index].empType
+		validType=isValidType(emp[index].empType)
+	END FOR
+EXCEPTION
+	WHEN noSuchId THEN
+		PRINT "error message"
+	WHEN noSuchType THEN
+		PRINT "error message'
+
+	FOR index=0 TO 4
+		
+		IF (emp[index].empType=="permenant" || emp[index].empType=="PERMANANT) THEN
+			leaves=2
+			totalLeaves=leaves*12
+		ELSE IF (emp[index].empType=="contract" || emp[index].empType=="CONTRACT") THEN
+			leaves=1
+			totalLeaves=leaves*12
+		END IF
+		
+		PRINT "Employee ID",emp[index].empId
+		DISPLAY "Total Available Leaves are ",tatalLeaves
+	END FOR
+END
+
+/**************************************************************************************
+* Module Name 	: isValidId
+* Author Name	: Abhishikth
+* Input		: empId
+* Return type	: boolean
+* Version	: 1
+* Created On	: 24/05/2017
+**************************************************************************************/
+
+SUB isValidID(empId)
+	IF (isDigits(empId)) THEN
+		RETURN true
+	ELSE
+		RAISE NoSuchId(" Enter a Valid ID")
+	END IF
+END SUB
+
+/**************************************************************************************
+* Module Name 	: isValidType
+* Author Name	: Abhishikth
+* Input		: empType
+* Return type	: boolean
+* Version	: 1
+* Created On	: 24/05/2017
+**************************************************************************************/
+
+SUB isValidType(empType)
+	IF (empType == permenant" OR empType == "contract")
+		RETURN true
+	ELSE 
+		RAISE NoSuchType(" Enter a valid Type")
+	END IF
+END SUB

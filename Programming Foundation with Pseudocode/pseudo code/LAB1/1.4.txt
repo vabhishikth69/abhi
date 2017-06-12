@@ -1,0 +1,19 @@
+BEGIN
+	DECLARE num,rem,res,temp AS INTEGER
+	INITIALIZE res=0	
+
+	PROMPT "Enter a number" AND STORE IN num
+	
+	temp=num
+	FOR num!=0
+		rem=num%10
+		res=res+(rem*rem*rem)
+		num=num/10
+	END FOR
+	
+	IF temp==res
+		PRINT "Given number is an AMSTRONG Number"
+	ELSE
+		PRINT "Given number is not an AMSTRONG Number"
+	END IF
+END

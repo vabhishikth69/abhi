@@ -1,0 +1,16 @@
+BEGIN
+	DECLARE years AS INTEGER
+	DECLARE tag AS STRING
+	
+	PROMPT "Enter years of experience" AND STORE IN years
+	
+	IF years<3 THEN
+		DISPLAY tag="BLUE"
+	ELSE IF years<5 THEN
+		DISPLAY tag="GREY"
+	ELSE IF years<10 THEN
+		DISPLAY tag="YELLOW"
+	ELSE
+		DISPLAY tag="RED"
+	END IF
+END

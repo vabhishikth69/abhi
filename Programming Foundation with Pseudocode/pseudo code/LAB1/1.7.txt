@@ -1,0 +1,11 @@
+BEGIN
+	DECLARE price AS INTEGER
+	DECLARE totalCost,taxRate AS FLOAT
+	INITIALIZE taxRate=0.56
+
+	PROPMT "Enter price of your product"
+	ACCEPT price
+	CALCULATE totalCost=price*taxRate
+	
+	PRINT "Total price of product is : ",totalCost
+END

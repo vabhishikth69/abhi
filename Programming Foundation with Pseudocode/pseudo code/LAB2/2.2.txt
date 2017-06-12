@@ -1,0 +1,32 @@
+/***************************************************
+File Name	: Exercise 2.2
+Author Name	: Abhishikth
+Version		: 1
+Created On	: 23/05/2017
+***************************************************/
+BEGIN
+	DECLARE num,rem,sum,result AS INTEGER
+	
+	PROMPT "Enter a number " AND STORE IN num
+
+	result=sumOfNum(num);
+	
+	PRINT "Sum of the number is ",result
+END
+
+/**************************************************
+Sub Name	: sumOfNum
+Input parameter	: number
+Return type	: integer
+Created On	: 23/05/2017
+**************************************************/
+
+SUB sumOfNum(num)
+	WHILE (num!=0)
+	DO
+		CALCULATE rem=num%10
+		CALCULATE sum=sum+rem
+		CALCULATE num=num/10
+	END WHILE
+	RETURN sum
+END SUB

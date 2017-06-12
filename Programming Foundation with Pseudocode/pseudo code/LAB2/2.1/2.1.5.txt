@@ -1,0 +1,42 @@
+/*********************************************************************
+ * File                 : 2.1.5
+ * Author Name          : Abhishikth
+ * Description          : Program to convert binarty to decimal 
+ * Version              : 1.0
+ * Date 	        : 23-05-2017
+*********************************************************************/
+BEGIN
+	DECLARE binary,decimal,rem,res,count AS INTEGER
+	INITIALIZE decimal=0,count=0,res=0,rem=0
+
+	PROMPT "Enter a Binary number" AND STORE IN binary
+	FOR binary!=0
+		rem=binary%10
+		IF rem==1
+			res=res+(2^count)
+		END IF
+		binary=binary/10
+		count=count+1
+	END FOR
+	decimal=res
+
+	PRINT "Decimal number is ",decimal
+END
+/*********************************************************************
+* Module Name         : decimal(num)
+* Input Parameters    : number of the array
+* Return Type         : INTEGER
+* Author              : Abhishikth
+*  Date       	      : 23-05-2017
+*********************************************************************/
+SUB decimal(num)
+	INITIALIZE dec=0,count=0,rem=0
+	WHILE(num<0)
+		rem=num%10
+		dec=dec+(rem*2^count)
+		num=num/10
+		count=count+1
+	ENDWHILE
+	RETURN dec
+END SUB
+	 

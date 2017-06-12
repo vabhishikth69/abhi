@@ -1,0 +1,55 @@
+/****************************************************************
+* File Name	: 4.3
+* Author	: Abhishikth
+* Description	: To calculate total price of product including tax
+* Created On	: 24/05/2017
+****************************************************************/
+
+BEGIN
+	DECLARE price,quantity AS INTEGER
+	DECLARE totalCost,taxRate AS FLOAT
+	INITIALIZE taxRate TO 0.56
+	PROMPT "Enter price of your product"
+	ACCEPT price
+	PROMPT "Enter quantity of your product"
+	ACCEPT quantity
+	IF ( isValidPrice(price) AND isValidQuantity(quantity))
+		totalCost=price*quantity*taxRate	
+EXCEPTION
+	WHEN noSuchPrice THEN
+		PRINT "error message"
+	WHEN noSuchQuantity THEN
+		PRINT "error message"
+	PRINT "Total price of product is": totalCost
+END
+
+/*****************************************************************
+* Module Name	: isValidPrice
+* input		: price
+* Return type	: boolean
+* Created on	: 24/05/2017
+*****************************************************************/
+
+SUB isValidPrice(price)
+	IF( isDigits(price) AND price>0)
+		RETURN true
+	ELSE
+		RAISE noSuchPrice(" Enter a valid price")
+	END IF
+END SUB
+
+/*****************************************************************
+* Module Name	: isValidQuantity
+* input		: quantity
+* Return type	: boolean
+* Created on	: 24/05/2017
+*****************************************************************/
+
+SUB isValidQuantity(quantity)
+	IF( isDigits(quantity) AND quantity>0)
+		RETURN true
+	ELSE
+		RAISE noSuchQuantity(" Enter a valid quantity")
+	END IF
+END SUB
+

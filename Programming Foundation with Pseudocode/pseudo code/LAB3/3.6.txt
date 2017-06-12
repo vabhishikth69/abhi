@@ -1,0 +1,78 @@
+/*****************************************************************************
+* File Name	: 3.6
+* Author	: Abhishikth
+* Description	: To sort and binary search in array
+* Version	: 1.0
+* Created on	: 25/05/2017
+****************************************************************************/
+
+BEGIN
+	DECLARE num[5] AS INTEGER ARRAY
+	DECLARE searchNum,index,number AS INTEGER
+
+	PROMPT "Enter 5 numbers" 
+	FOR index=0 TO 4
+		ACCEPT num[index]
+	END FOR
+	PROMPT "Enter a number to be searched" AND STORE IN number
+
+	num=sort(num,5)
+	index=-1
+	index=search(num,0,n,number)
+
+	IF(index==-1)
+		PRINT "Number is not available in the list"	
+	ELSE
+		PRINT "Number is found at" +index +"position"
+	END IF
+
+END
+
+/*****************************************************************************
+* Module Name	: sort
+* Input 	: num,n
+* Description	: To sort array
+* RETURN Type	: INTEGER ARRAY
+* Created on	: 25/05/2017
+****************************************************************************/
+
+SUB sor(num,n)
+	DECLARE i,j,temp AS INTEGER
+	FOR i=0 TO n-1
+		FOR j=i+1 TO n-1
+			IF (num[i]>num[j]) THEN
+				temp=num[j]
+				num[j]=num[i]
+				num[i]=temp
+			END IF
+		END FOR
+	END FOR
+	RETURN num
+END SUB
+
+/*****************************************************************************
+* Module Name	: search
+* Input 	: num,low,high,number
+* Description	: To binary search in array
+* RETURN Type	: INTEGER
+* Created on	: 25/05/2017
+****************************************************************************/
+
+SUB search(num,low,high,number)
+	DECLARE mid AS INTEGER
+	CALCULATE mid=(low+high)/2
+	IF (num[mid] == number) THEN
+		index=mid
+	IF (number<num[mid] AND (high-low)>1) THEN
+		low=0
+		high=mid
+		search(num,low,high,number)
+	ELSE IF (number>num[mid] AND (high-low)>1) THEN
+		low=mid+1
+		high=high
+		search(num,low,high,number)
+	ELSE
+		index=-1 		
+	END IF
+	RETURN index
+END SUB

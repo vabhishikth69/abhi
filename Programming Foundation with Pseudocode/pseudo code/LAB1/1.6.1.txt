@@ -1,0 +1,17 @@
+BEGIN
+	DECLARE num[10] AS INTEGER ARRAY
+	DECLARE index,min AS INTEGER
+	INITIALIZE index=0,min=9999
+
+	PROMPT "Enter 10 numbers"
+	FOR index=0 TO 9
+		ACCEPT num[index]
+	END FOR
+	FOR index=0 TO 9
+		IF num[index]<min THEN
+			min=num[index]
+		END IF
+	END FOR
+	
+	PRINT "Smallest number in ARRAY",min
+END

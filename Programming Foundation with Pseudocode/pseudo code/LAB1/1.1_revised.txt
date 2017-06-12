@@ -1,0 +1,28 @@
+BEGIN
+	DECLARE userId AS INTEGER
+	DECLARE userName AS STRING
+	DECLARE last,current,unitsConsumed,fixedCharge AS INTEGER
+	DECLARE netAmount AS FLOAT
+	INITIALIZE fixedCharge=100
+
+	PROMPT "Enter user id" AND STORE IN userId
+	PROMPT "Enter user name" AND STORE IN userName
+	PROMPT "Enter last month reading" AND STORE IN last
+	PROMPT "Enter current month reading" AND STORE IN current
+
+	CALCULATE unitsConsumed=(current-last)
+	IF unitsConsumed<100 THEN
+		CALCULATE netAmount=(unitsConsumed*3.35)+fixedCharge
+	ENDIF
+	IF (unitsConsumed>=100 AND unitsConsumed<200) THEN
+		CALCULATE netAmount=(100*3.35)+((unitsConsumed-100)*4.49)+fixedCharge
+	ENDIF
+	IF unitsConsumed>=200 THEN 
+		CALCULATE netAmount=(100*3.35)+(100*4.49)+((unitsConsumed-200)*5.95)+fixedCharge
+	ENDIF
+
+	PRINT "USER ID : ",userId
+	PRINT "USER NAME : ",userName
+	PRINT "UNIT CONSUMED : ",unitsConsumed
+	PRINT "NET AMOUNT : ",netAmount
+END

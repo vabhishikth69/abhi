@@ -1,0 +1,47 @@
+/***************************************************
+File Name	: Exercise 2.3
+Author Name	: Abhishikth
+Version		: 1
+Created On	: 23/05/2017
+***************************************************/
+BEGIN
+	DECLARE num[10] AS INTEGER ARRAY
+	DECLARE count,index AS INTEGER
+	INITIALIZE index TO 0
+
+	PROMPT "Enter 10 numbers"
+	WHILE (index<10)
+	DO
+		ACCEPT num[index]
+		index=index+1
+	END WHILE
+
+	count=findUniqueNum(num)
+	
+	PRINT "Number of unique numbers are ",count
+
+END
+
+/**************************************************
+Sub Name	: findUniqueNum
+Input parameter	: Integer Array
+Return type	: integer
+Created On	: 23/05/2017
+**************************************************/
+
+SUB findUniqueNum(num)
+	DECLARE i,j,k,unique AS INTEGER
+	INITIALIZE unique TO 10,i TO 1,j TO 0
+	FOR i=0 TO 9
+		FOR j=0 TO 9
+			IF (num[i]==num[j] AND i!=j) THEN
+				flag=FALSE
+			END IF
+		END FOR
+		IF (flag == TRUE)
+			unique=unique+1
+		END IF
+		flag=TRUE
+	END FOR
+	RETURN unique
+END SUB

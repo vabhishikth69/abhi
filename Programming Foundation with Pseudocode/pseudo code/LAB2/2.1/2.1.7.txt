@@ -1,0 +1,32 @@
+/*********************************************************************
+ * File                 : 2.1.7
+ * Author Name          : Abhishikth
+ * Description          : Program to find price of the product 
+ * Version              : 1.0
+ * Date 	        : 23-05-2017
+*********************************************************************/
+BEGIN
+	DECLARE price AS INTEGER
+	DECLARE Cost AS FLOAT
+	
+	PROMPT "Enter the Price of your product"
+	ACCEPT price
+        Cost=Totalcost()
+        PRINT "Total Cost of Product is ",Cost
+END
+/*********************************************************************
+ * File                 : 2.1.7
+ * Author Name          : Abhishikth
+ * Description          : Program to return price of the product 
+ * Version              : 1.0
+ * Date 	        : 23-05-2017
+**********************************************************************/
+
+SUB Totalcost()
+        DECLARE TaxRate as FLOAT
+
+        INITIALIZE TaxRate=0.56
+        Cost=price*TaxRate
+        RETURN cost
+	
+END SUB	

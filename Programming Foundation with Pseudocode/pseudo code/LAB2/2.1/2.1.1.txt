@@ -1,0 +1,44 @@
+/**************************************************************
+ *File		 	: 2.1.1
+ *Author Name		: Abhishikth
+ *Desc			: Program to find the electricity bill amount
+ *Version		: 1.0
+ *Last Modified Date	: 23-May-2017
+ *Changed Description	: Description about the changes implemented
+**************************************************************/
+BEGIN
+	DECLARE UserID as Integer
+	DECLARE UserName as String
+	DECLARE Lastmonthmeterreading as Integer
+	DECLARE Currentmonthmeterreading as Integer
+	DECLARE CONSTANT FixedCharge=100
+
+	///INPUT
+
+	PROMPT"Enter the UserID"
+	ACCEPT UserID
+	PROMPT"Enter the UserName"
+	ACCEPT UserName
+	PROMPT"Last month meter reading"
+	ACCEPT Lastmonthmeterreading		
+	PROMPT"current month meter reading"
+	ACCEPT Currentmonthmeterreading
+	NETAMOUNT=Bill(NetAmount)
+	PRINT"UserID"+UserID
+	PRINT"UserName"+UserName
+	Print"NetAmount",NetAmount
+END
+
+/*********************************************************************
+* Module Name         : Bill(Net Amount)
+* Input Parameters    : number
+* Return Type         : BOOLEAN
+* Author              : Abhishikth
+* Creation Date       : 23-May-2017
+* Description         : Checking for Net Amount
+ *********************************************************************/
+SUB Bill(NetAmount)
+	Unitconsumed = (Lastmonthmeterreading) – (Currentmonthmeterreading)
+	NetAmount = Unitconsumed * 1.15 +FixedCharge
+	RETURN NetAmount 
+END SUB

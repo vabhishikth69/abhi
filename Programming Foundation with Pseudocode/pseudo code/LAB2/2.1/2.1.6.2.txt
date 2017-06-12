@@ -1,0 +1,34 @@
+/*********************************************************************
+ * File                 : 2.3
+ * Author Name          : Abhishikth
+ * Description          : Program to find odd and even numbers
+ * Version              : 1.0
+ * Date 	        : 23-05-2017
+*********************************************************************/
+BEGIN
+	DECLARE numbers[10] as integer array
+	DECLARE num as integer
+	FOR index=0 to 9
+		ACCEPT numbers[index]
+	END FOR
+	even num=index(num1)
+	odd  num=index(num2)
+	print"even num"+even num
+	print"odd num"+odd num
+END
+/*********************************************************************
+* Module Name         : index(num1,num2)
+* Input Parameters    : number of the array
+* Return Type         : INTEGER
+* Author              : Abhishikth
+*  Date       	      : 23-05-2017
+*********************************************************************/
+SUB index(num1,num2)
+	FOR index=0 to 9
+		IF numbers[index]%2==0 then
+			RETURN  num1
+		else
+			RETURN  num2
+		END IF
+	END FOR
+END SUB
